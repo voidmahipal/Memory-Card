@@ -1,34 +1,17 @@
 import { useState,useEffect } from 'react'
 import './App.css'
+import { Header } from './components/Header'
+import { Scoreboard } from './components/Scoreboard'
+import { Gameboard } from './components/Gameboard'
 
-function extractUsefulInfo(obj) {
-  return {
-    id : obj.id,
-    name : obj.name,
-    imgUrl : obj.sprites.front_default,
-    clickCount : 0,
-  };
-}
 function App() {
-
-  const pokemonNameList = ["pikachu","charizard","bulbasaur","squirtle","gengar","eevee","snorlax","lucario","greninja","dragonite","mewtwo","umbreon"];
-
-  let pokemonList=[];
-  useEffect(()=>{
-    for(let name of pokemonNameList) {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-      .then((response)=>{
-        return response.json();
-      })
-      .then((response)=>{
-        const data = extractUsefulInfo(response);
-        pokemonList.push(data);
-      }).catch(()=>{
-        alert("Failed to Load!");
-      })
-    }
-    console.log(pokemonList);
-  },[]);
+  const [score,setScore] = useState(0);
+  const [bestScore,setBestScore] = useState(0);
+  return <>
+    <Header/>
+    <Scoreboard score={score} bestScore={bestScore} />
+    <Gameboard setScore={setScore} setBestScore={setBestScore} score={score} bestScore={bestScore}/>
+  </>
 }
 
 export default App

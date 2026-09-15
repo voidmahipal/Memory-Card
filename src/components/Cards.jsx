@@ -1,20 +1,29 @@
-function handleClick(clickCount,setScore,setBestScore,score,bestScore) {
-    clickCount=clickCount+1;
-    if(clickCount>1) {
-        alert("Game Over!!");
-        setBestScore(max(score),bestScore);
+function handleClick(pokemonObj,setScore,setBestScore,score,bestScore,resetBoard,shuffleBoard) {
+    
+    pokemonObj.clickCount = pokemonObj.clickCount+1;
+    if(pokemonObj.clickCount>1) {
+        alert(`You Lost!! You clicked on ${pokemonObj.name} twice!!`);
         setScore(0);
+        resetBoard();
         return;
     }
+    if((score+1)===12) {
+        alert("You won!!");
+        setScore(0);
+        setBestScore(12);
+        resetBoard();
+        return;
+    } 
     setScore(score+1);
-    setBestScore(Math.max(score),bestScore);
+    setBestScore(Math.max(score+1,bestScore));
+    shuffleBoard();
 }
 
-function Card({name,id,imgUrl,clickCount,setScore,setBestScore,score,bestScore}) {
+function Card({pokemonObj,setScore,setBestScore,score,bestScore,resetBoard,shuffleBoard}) {
 
-    return (<div onClick={()=>handleClick(clickCount,setScore,setBestScore,score,bestScore)}>
-        <img src={imgUrl} alt={name} />
-        <h3>{name}</h3>
+    return (<div onClick={()=>handleClick(pokemonObj,setScore,setBestScore,score,bestScore,resetBoard,shuffleBoard)}>
+        <img src={pokemonObj.imgUrl} alt={pokemonObj.name} />
+        <h3>{pokemonObj.name}</h3>
     </div>);
 }
 

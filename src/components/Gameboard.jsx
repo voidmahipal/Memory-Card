@@ -39,10 +39,26 @@ function Gameboard({setScore,setBestScore,score,bestScore}) {
     return <>
         <section>
             {pokemonList.map((pokemonInfo)=>{
-                return <Card name={pokemonInfo.name} id={pokemonInfo.id} imgUrl={pokemonInfo.imgUrl} clickCount={pokemonInfo.clickCount} setScore={setScore} setBestScore={setBestScore} score={score} bestScore={bestScore} key={pokemonInfo.id}></Card>
+                return <Card pokemonObj={pokemonInfo} setScore={setScore} setBestScore={setBestScore} score={score} bestScore={bestScore} resetBoard={resetBoard} shuffleBoard={shuffleBoard} key={pokemonInfo.id}></Card>
             })}
         </section>
     </>
+    function shuffleBoard() {
+        for(let i=pokemonList.length-1;i>0;i--) {
+            const j=Math.floor(Math.random()*(i+1));
+            [pokemonList[i],pokemonList[j]] = [pokemonList[j],pokemonList[i]];
+        }
+        setPokenmonList(pokemonList);
+    }
+    function resetBoard() {
+        for(let i=pokemonList.length-1;i>0;i--) {
+            const j=Math.floor(Math.random()*(i+1));
+            [pokemonList[i],pokemonList[j]] = [pokemonList[j],pokemonList[i]];
+            pokemonList[i].clickCount=0;
+            pokemonList[j].clickCount=0;
+        }
+        setPokenmonList(pokemonList);
+    }
 }
 
 export {Gameboard};

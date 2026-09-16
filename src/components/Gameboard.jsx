@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card } from "./Cards";
+import styles from "../styles/Gameboard.module.css"
 
 const pokemonNameList = ["pikachu","charizard","bulbasaur","squirtle","gengar","eevee","snorlax","lucario","greninja","dragonite","mewtwo","umbreon"];
 
@@ -35,9 +36,9 @@ function Gameboard({setScore,setBestScore,score,bestScore}) {
         }).catch(()=>alert("Failed to load"));
     },[])
 
-    if(isLoading) return <p>Loading...</p>
+    if(isLoading) return <p className={styles.loading}>Loading...</p>
     return <>
-        <section>
+        <section className={styles.gameboard}>
             {pokemonList.map((pokemonInfo)=>{
                 return <Card pokemonObj={pokemonInfo} setScore={setScore} setBestScore={setBestScore} score={score} bestScore={bestScore} resetBoard={resetBoard} shuffleBoard={shuffleBoard} key={pokemonInfo.id}></Card>
             })}

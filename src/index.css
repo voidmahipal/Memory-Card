@@ -1,0 +1,29 @@
+:root {
+  --background: #F0FDF4;
+
+  --header: #059669;          
+  --header-text: #FFFFFF;   
+
+  --scoreboard: #D1FAE5;
+  --score-text: #064E3B;
+
+  --card: #FFFFFF;           
+  --card-border: #6EE7B7;    
+  --card-hover: #ECFDF5;
+
+  --accent-red: #EF4444;     
+  --accent-blue: #3B82F6; 
+}
+*,*::before,*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#root{
+    font-family: "Inter",sans-serif;
+    background: var(--background);
+    color: var(--score-text);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

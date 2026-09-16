@@ -1,0 +1,18 @@
+.card{
+    background: var(--card);
+    border: 2px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15rem;
+    border: 3px solid #10B981;
+}
+.card:hover{
+    cursor: pointer;
+    background: var(--card-hover);
+}
+.card img{
+    height: 120px;
+    width: 120px;
+}

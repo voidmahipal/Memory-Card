@@ -1,3 +1,5 @@
+import styles from "../styles/Card.module.css"
+
 function handleClick(pokemonObj,setScore,setBestScore,score,bestScore,resetBoard,shuffleBoard) {
     
     pokemonObj.clickCount = pokemonObj.clickCount+1;
@@ -21,7 +23,7 @@ function handleClick(pokemonObj,setScore,setBestScore,score,bestScore,resetBoard
 
 function Card({pokemonObj,setScore,setBestScore,score,bestScore,resetBoard,shuffleBoard}) {
 
-    return (<div onClick={()=>handleClick(pokemonObj,setScore,setBestScore,score,bestScore,resetBoard,shuffleBoard)}>
+    return (<div className={styles.card} onClick={()=>handleClick(pokemonObj,setScore,setBestScore,score,bestScore,resetBoard,shuffleBoard)}>
         <img src={pokemonObj.imgUrl} alt={pokemonObj.name} />
         <h3>{pokemonObj.name}</h3>
     </div>);

@@ -7,6 +7,7 @@ function handleClick(pokemonObj,setScore,setBestScore,score,bestScore,resetBoard
         alert(`You Lost!! You clicked on ${pokemonObj.name} twice!!`);
         setScore(0);
         resetBoard();
+        localStorage.setItem("BestScore",bestScore);
         return;
     }
     if((score+1)===12) {
@@ -14,6 +15,7 @@ function handleClick(pokemonObj,setScore,setBestScore,score,bestScore,resetBoard
         setScore(0);
         setBestScore(12);
         resetBoard();
+        localStorage.setItem("BestScore",12);
         return;
     } 
     setScore(score+1);

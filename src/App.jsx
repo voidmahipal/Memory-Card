@@ -6,7 +6,7 @@ import { Gameboard } from './components/Gameboard'
 
 function App() {
   const [score,setScore] = useState(0);
-  const [bestScore,setBestScore] = useState(0);
+  const [bestScore,setBestScore] = useState(localStorage.getItem("BestScore")===null ? 0 : Number(localStorage.getItem("BestScore")));
   return <>
     <Header/>
     <Scoreboard score={score} bestScore={bestScore} />
